@@ -1,0 +1,22 @@
+<button class="btn" type="submit">
+    Đăng nhập
+</button>
+<form action="" method="post">
+
+    {{#if errMessage}}
+    <div class="alert alert-danger alert-dismissible fade show" id="error" role="alert">
+        {{errMessage}}
+    </div>
+    {{/if}}
+
+    <div class="user-box">
+        <input type="text" name="Username" required="">
+        <label>Tên đăng nhập</label>
+    </div>
+    <div class="user-box">
+        <input type="password" name="Password" required="">
+        <label>Mật khẩu</label>
+    </div>
+
+
+</form>
