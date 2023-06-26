@@ -1,0 +1,16 @@
+<h2>THÊM KHÁCH HÀNG MỚI</h2>
+    
+      <div class="main">
+        <form method="post" id="formAdd">
+            <div class="profile">
+                <input type="text" placeholder="Tên" name="FullName" id="name" autofocus>
+                <input type="text" placeholder="Địa chỉ" name="Address" required>
+                <input type="email" placeholder="Email" name="Email" required>
+                <input type="tel" placeholder="Số điện thoại" pattern="[0-9]*" name="PhoneNumber" id="phone" required>
+                <input style="width:315px;" type="date" placeholder="Ngày sinh" name="DateOfBirth" required>
+                {{!-- <input type="hidden" name="DeptMoeny" value="0"> --}}
+            </div>
+            
+            <button class="btn btn-dark btn-lg px-5" type="submit">Lưu</button>
+        </form>
+      </div>

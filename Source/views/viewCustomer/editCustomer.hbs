@@ -1,0 +1,52 @@
+
+    <div id="container">
+      <div id="side" class="verticalLine">
+        <form action="./edit" method="post">
+          <input type="hidden" placeholder="Mã người dùng" id="idCustomer" name="idCustomer"/>
+          <input type="text" placeholder="Họ tên" id="FullName" name="FullName" readonly/>
+          <input type="text" placeholder="Địa chỉ" id="Address" name="Address" required/>
+          <input type="tel" pattern="[0-9]*" placeholder="SĐT" id="PhoneNumber" name="PhoneNumber" readonly/>
+          <input type="text" placeholder="Ngày sinh" id="DateOfBirth" name="DateOfBirth" readonly/>
+          <input type="email" placeholder="Email" id="Email" name="Email" required/>
+          <input type="number" placeholder="Số nợ" id="DeptMoney" name="DeptMoney" required/>
+          
+          <button class="btn" type="submit" onclick="editRow();">Sửa</button>
+        </form>
+      </div>
+
+      <div id="main">
+        <h2>DANH SÁCH KHÁCH HÀNG</h2>
+        <hr id="hr2" />
+        <div class="infor" id="infor">
+          <form action="" class="form" id="form-1">
+            <table class="table table-bordered table-light" id="sampleTable">
+              <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Họ Tên</th>
+                    <th scope="col">Địa chỉ</th>
+                    <th scope="col">SĐT</th>
+                    <th scope="col">Ngày sinh</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Số nợ</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each list}}
+                    <tr>
+                        <td>{{idCustomer}}</td>
+                        <td>{{FullName}}</td>
+                        <td>{{Address}}</td>
+                        <td>{{PhoneNumber}}</td>
+                        <td>{{DateOfBirth}}</td>
+                        <td>{{Email}}</td>
+                        <td>{{DeptMoney}}</td>
+                    </tr>
+                {{/each }}
+
+              </tbody>
+            </table>
+          </form>
+        </div>
+      </div>
+    </div>

@@ -1,0 +1,91 @@
+<h2>DANH SÁCH TRA CỨU</h2>
+
+      <div id="search">
+        <i class="material-icons">search</i>
+        <!-- <input id="myInput" class="form-control " type="search" placeholder="Nhập thông tin cần tìm" aria-label="Search"> -->
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Nhập thông tin cần tìm" title="Type in a name">
+        <button class="btn btn-outline-dark my-0 my-sm-0" type="submit">Tìm</button>
+      </div>
+      
+      <div id="container" >
+        <div id="main">
+            
+            <hr id="hr2">  
+            <div class="infor" id="infor">
+                <form action=""  class="form" id="form-1">
+                    <table class="table table-bordered table-light" id="myTable">
+                        <thead>
+                          <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Tên sách</th>
+                            <th scope="col">Tác giả</th>
+                            <th scope="col">Thể loại</th>
+                            <th scope="col">Giá</th>
+                            <th scope="col">Số lượng</th>
+
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {{#each books}}
+                          <tr>
+                            <th>{{idBook}}</th>
+                            <td>{{BookName}}</td>
+                            <td>{{Author}}</td>
+                            <td>{{Topic}}</td>
+                            <td>{{Price}}</td>
+                            <td>{{Quantity}}</td>
+                          </tr>
+
+                          {{/each }}
+                
+                        </tbody>
+                      </table>
+                    
+                </form>
+            </div>
+        </div>    
+        {{!-- <div id="side" class="verticalLine">
+            <div class="image_book">          
+                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" >
+                  <div class="carousel-inner">
+                    <div class="carousel-item active" data-interval="3000">
+                      <img style="height: 360px;" src="../Images/1.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item" data-interval="3000">
+                      <img style="height: 360px;" src="../Images/2.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item" data-interval="3000">
+                      <img style="height: 360px;" src="../Images/3.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item" data-interval="3000">
+                      <img style="height: 360px;" src="../Images/4.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item" data-interval="3000">
+                      <img style="height: 360px;" src="../Images/5.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item" data-interval="3000">
+                      <img style="height: 360px;" src="../Images/6.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item" data-interval="3000">
+                      <img style="height: 360px;" src="../Images/7.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item" data-interval="3000">
+                      <img style="height: 360px;" src="../Images/8.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item" data-interval="3000">
+                      <img style="height: 360px;" src="../Images/9.jpg" class="d-block w-100" alt="...">
+                    </div>
+                  </div>
+                 <button class="carousel-control-prev" type="button" data-target="#carouselExampleControls" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-target="#carouselExampleControls" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </button>
+                </div>
+            </div>
+        </div> --}}
+    </div>
+

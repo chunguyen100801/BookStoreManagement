@@ -1,0 +1,247 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hóa đơn</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <style>
+      html {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+        background-image: url(../../public/images/bg-blur.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+      }
+
+      .logo a {
+        position: absolute;
+        font-size: 80px;
+        color: black;
+        text-decoration: none;
+      }
+
+      nav {
+        font-size: 20px;
+        padding: 25px;
+      }
+
+      #search {
+        display: flex;
+        height: 50px;
+        margin-left: 400px;
+      }
+
+      #search > input {
+        width: 600px;
+        height: 40px;
+        font-size: medium;
+      }
+
+      #search > button {
+        width: 100px;
+        height: 40px;
+        font-size: medium;
+      }
+
+      #container {
+        position: relative;
+        display: flex;
+        max-width: 1600px;
+        margin: 0 0;
+        min-height: 550px;
+        font-size: 20px;
+      }
+
+      #container #main {
+        margin-top: 15px;
+        width: 650px;
+        padding-left: -100px;
+        padding-right: -100px;
+        margin-left: 250px;
+      }
+
+      #container #main h2 {
+        margin-top: 2px;
+        margin-bottom: 5px;
+        text-align: center;
+        color: black;
+        font-size: 30px;
+        font-weight: bolder;
+      }
+
+      #container #main #infor {
+        overflow-x: hidden;
+        overflow-y: auto;
+
+        height: 400px;
+      }
+
+      #container #side {
+        width: 360px;
+        margin-left: 250px;
+        margin-top: 100px;
+      }
+
+      #container #side h2 {
+        text-align: center;
+        font-size: 30px;
+        padding-bottom: 20px;
+      }
+
+      .image_book {
+        width: 400px;
+      }
+
+      #container #side input {
+        border: none;
+        border-bottom: 2px solid rgb(255, 255, 255);
+        overflow: hidden;
+        background: transparent;
+        display: flex;
+        flex-direction: column;
+        font-size: 30px;
+        height: 40px;
+        margin-bottom: 20px;
+        color: black;
+      }
+
+      #container #side button {
+        height: 50px;
+        
+        color: black;
+        font-size: 20px;
+        background-color: black;
+        color: beige;
+
+
+      }
+
+      ::placeholder {
+        /* chạy tốt trên Chrome, Firefox, Opera, Safari 10.1+ */
+        color: white !important;
+        opacity: 1; /* Firefox */
+      }
+
+      .infor1{
+        position: absolute;
+        color: white;
+        margin-left: 50px;
+        margin-top: -530px;
+        font-size: 20px;
+        text-align: center;
+
+      }
+
+      .total input{
+        position: absolute;
+        border: none;
+        border-bottom: 2px solid rgb(255, 255, 255);
+        overflow: hidden;
+        background: transparent;
+
+        font-size: 30px;
+        height: 40px;
+        margin-left: 250px;
+        margin-top: -190px;
+        color: black;
+      }
+
+      #thanhtoan{
+        position: absolute;
+        margin-top: 100px;
+        margin-left: 240px;
+      }
+
+      #ghino{
+        position: absolute;
+        margin-top: 100px;
+        margin-left: 140px;
+      }
+
+      #them{
+        position: absolute;
+        margin-top: 20px;
+         margin-left: 290px;
+      }
+
+    
+    </style>
+  </head>
+  <body>
+    <div class="logo">
+        <img src="../../public/images/logo1.png" alt="">
+        <a href="">LIBIB</a>
+    </div>
+
+    <nav class="navbar navbar-expand-lg ">
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto nav nav-tabs">
+                <li class="nav-item ">
+                    <a class="nav-link text-dark " href="./staff/home">Trang chủ <span
+                            class="sr-only">(current)</span></a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link text-dark active" href="../staff/receipt">Lập hóa đơn</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link text-dark " href="../staff/bill">Lập phiếu thu tiền</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-dark " data-toggle="dropdown" href="#" role="button"
+                        aria-expanded="false">Quản lý khách hàng</a>
+                    <div class="dropdown-menu" style="font-size: 20px;">
+                        <a class="dropdown-item" href="/staff/customer">Tra cứu thông tin</a>
+                        <a class="dropdown-item" href="/staff/customer/add">Thêm</a>
+                        <a class="dropdown-item" href="/staff/customer/edit">Sửa</a>
+                        <a class="dropdown-item" href="/staff/customer/history">Lịch sử mua hàng</a>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="../staff/receipt/historyReceip">Lịch sử bán hàng</a>
+                </li>
+
+            </ul>
+
+
+            <ul class="navbar-nav mr-left nav nav-tabs">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-dark" data-toggle="dropdown" href="./profile.html"
+                        role="button" aria-expanded="false"><i class="glyphicon glyphicon-user"></i></a>
+
+                    <div class="dropdown-menu" style="font-size: 20px;">
+                        <a class="dropdown-item " href="/staff/account/change_password">Đổi mật khẩu</a>
+                    </div>
+                </li>
+            </ul>
+            <a href="">
+                <span class="navbar-text">
+                    {{user.Username}}
+                </span>
+            </a>
+            <form action="/logout" method="post" id="fLogout">
+            </form>
+            <a href="javascript: $('#fLogout').submit();">Đăng xuất</a>
+
+    </nav>
+
+ {{{body}}}
+    
+  </body>
+</html>

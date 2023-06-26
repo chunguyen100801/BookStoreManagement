@@ -1,0 +1,82 @@
+<div id="container">
+
+  <div id="side" class="verticalLine">
+    <form action="./edit" method="post" id="formUpdate">
+
+      <input type="Hidden" placeholder="Mã sách" id="idBook" name="idBook" required>
+      <input type="text" placeholder="Tên sách" id="BookName" name="BookName" required>
+      <input type="text" placeholder="Thể loại" id="Topic" name="Topic" required>
+      <input type="text" placeholder="Tác giả" id="Author" name="Author" required>
+      <input type="text" placeholder="Số lượng" id="Quantity" name="Quantity" required>
+      <input type="text" placeholder="Giá" id="Price" name="Price" required>
+      <button class="btn" type="submit" onclick="edit_Row()">Sửa</button>
+    </form>
+  </div>
+
+  <div id="main">
+    <h2>DANH SÁCH SÁCH CÓ TRONG KHO </h2>
+    <hr id="hr2">
+    <div class="infor" id="infor">
+      <form action="/manager/home" method="post" class="form" id="form-1">
+        <table class="table table-bordered table-light" id="sampleTable">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Tên</th>
+              <th scope="col">Thể loại</th>
+              <th scope="col">Tác giả</th>
+              <th scope="col">Số lượng</th>
+              <th scope="col">Giá</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each listbook}}
+            <tr>
+              <th>{{idBook}}</th>
+              <td>{{BookName}}</td>
+              <td>{{Topic}}</td>
+              <td>{{Author}}</td>
+              <td>{{Quantity}}</td>
+              <td>{{Price}}</td>
+            </tr>
+
+            {{/each }}
+
+          </tbody>
+        </table>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  var table = document.getElementById("sampleTable"), rIndex;
+
+  for (var i = 1; i < table.rows.length; i++) {
+    table.rows[i].onclick = function () {
+      rIndex = this.rowIndex;
+      console.log(rIndex);
+      document.getElementById("idBook").value = this.cells[0].innerHTML;
+      document.getElementById("BookName").value = this.cells[1].innerHTML;
+      document.getElementById("Topic").value = this.cells[2].innerHTML;
+      document.getElementById("Author").value = this.cells[3].innerHTML;
+      document.getElementById("Quantity").value = this.cells[4].innerHTML;
+      document.getElementById("Price").value = this.cells[5].innerHTML;
+    };
+  }
+
+
+  // edit the row
+  function edit_Row() {
+    table.rows[rIndex].cells[0].innerHTML = document.getElementById("idBook").value
+    table.rows[rIndex].cells[1].innerHTML = document.getElementById("BookName").value;
+    table.rows[rIndex].cells[2].innerHTML = document.getElementById("Topic").value;
+    table.rows[rIndex].cells[3].innerHTML = document.getElementById("Author").value
+    table.rows[rIndex].cells[4].innerHTML = document.getElementById("Quantity").value;
+    table.rows[rIndex].cells[5].innerHTML = document.getElementById("Price").value;
+
+
+  }
+</script>
+

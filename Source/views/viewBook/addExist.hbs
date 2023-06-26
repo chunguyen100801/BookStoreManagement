@@ -1,0 +1,141 @@
+<div id="container">
+  <div id="side" class="verticalLine">
+    <form action="" method="post">
+      {{!-- <input type="Hidden" placeholder="Mã sách" id="id" /> --}}
+      <input type="text" placeholder="Tên sách" id="BookName" name="BookName" required/>
+      <input type="text" placeholder="Tác giả" id="Author" name="Author" required/>
+      <input type="text" placeholder="Số lượng" id="Quantity" name="Quantity" required/>
+
+      {{#if check1}}
+      <span>số lượng nhập phải lớn hơn {{minAdd}}</span>
+      {{/if}}
+
+      {{#if check2}}
+      <span>số lượng tồn của sách phải nhỏ hơn {{minInventory}}</span>
+      {{/if}}
+
+      <button class="btn ht" type="button" id="final">Hoàn tất</button>
+      <button class="btn them" type="button" onclick="insert_Row()" >Thêm</button>
+    </form>
+  </div>
+
+
+
+
+  <div id="main">
+    <h2>DANH SÁCH SÁCH CÓ TRONG KHO</h2>
+    <hr id="hr2" />
+    <div class="infor" id="infor">
+      <form action="" class="form" id="form-1">
+        <table class="table table-bordered table-light" id="sampleTable">
+          <thead>
+            <tr>
+              {{!-- <th scope="col">ID</th> --}}
+              <th scope="col">Tên</th>
+              <th scope="col">Tác giả</th>
+              <th scope="col">Số lượng</th>
+
+            </tr>
+          </thead>
+          <tbody>
+
+          </tbody>
+        </table>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+  var array = [];
+  var count = 0;
+  async function insert_Row() {
+
+
+    //var f = x.insertCell(5);
+    //var data1=document.getElementById('id').value;
+    var data1 = document.getElementById('BookName').value;
+    var data2 = document.getElementById('Author').value;
+    var data3 = document.getElementById('Quantity').value;
+
+    if(data3<1)
+    {
+      alert(`Số lượng sách lớn hơn 0`);
+      return;
+    }
+
+    var check = false;
+    var check2 = false;
+
+    await $.getJSON(`/manager/book/is_available?book=${data1}|${data2}`, function (data) {
+      if (data === -1) {
+        check = true;
+      }
+      else if (data > {{ minInventory }} && {{minInventory}} != -1){
+      check2 = true;
+    }
+  })
+
+  if (check == true) {
+    alert("Sách chưa có trong kho");
+    return;
+  }
+
+  if (check2 == true) {
+    alert('Lượng tồn của sách lớn hơn quy định');
+    return;
+  }
+
+  if (+data3 < +{{ minAdd }} && {{minAdd}} != -1)
+  {
+    alert("Số lượng nhập phải lớn hơn" + {{ minAdd }});
+  return;
+    }
+
+
+
+  var x = document.getElementById('sampleTable').insertRow(1);
+  var a = x.insertCell(0);
+  var b = x.insertCell(1);
+  var c = x.insertCell(2);
+
+  a.innerHTML = data1;
+  b.innerHTML = data2;
+  c.innerHTML = data3;
+
+const n = array.length;
+  for (var i = 0; i < n; i++) {
+    if (array[i].BookName === data1 && array[i].Author === data2) {
+      array[i].Quantity = +array[i].Quantity + +data3;
+      return;
+    }
+  }
+
+  array.push({ BookName: data1, Author: data2, Quantity: +data3});
+  }
+
+$('#final').on('click', e => {
+
+    e.preventDefault();
+    const dataJS = JSON.stringify({ array });
+
+    fetch("/manager/book/add_book_exist",
+      {
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+
+        method: "POST",
+        body: dataJS,
+      
+      }).then( res=>{
+
+        window.location.href = '/manager/home'
+      }
+      )
+  });       
+
+</script>

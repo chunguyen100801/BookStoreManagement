@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sửa thông tin sách</title>
+    <!-- <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script> -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+      integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+      crossorigin="anonymous"
+    ></script>
+
+    <style>
+      html {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+        /* background: linear-gradient(#141e30, #243b55); */
+        background-image: url(../../public/images/bg-blur.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+      }
+
+      .logo a {
+        position: absolute;
+        font-size: 80px;
+        color: black;
+        text-decoration: none;
+      }
+
+      nav {
+        font-size: 20px;
+        padding: 20px;
+      }
+
+      /* li{
+            font-size: 20px;
+            padding: 20px;
+        } */
+
+      #search {
+        display: flex;
+        /* width: 600px; */
+        height: 50px;
+        margin-left: 400px;
+      }
+
+      #search > input {
+        width: 600px;
+        height: 40px;
+        font-size: medium;
+      }
+
+      #search > button {
+        width: 100px;
+        height: 40px;
+        font-size: medium;
+      }
+
+      #container {
+        position: relative;
+        display: flex;
+        max-width: 1600px;
+        margin: 0 0;
+        min-height: 550px;
+        font-size: 20px;
+      }
+
+      #container #main {
+        margin-top: 30px;
+        width: 670px;
+        padding-left: -100px;
+        padding-right: -100px;
+        margin-left: 240px;
+      }
+
+      #container #main h2 {
+        margin-top: 2px;
+        margin-bottom: 5px;
+        text-align: center;
+        color: black;
+        font-size: 30px;
+        font-weight: bolder;
+      }
+
+      #container #main #infor {
+        overflow-x: hidden;
+        overflow-y: auto;
+
+        height: 350px;
+      }
+
+      #container #side {
+        width: 360px;
+        margin-left: 230px;
+        margin-top: 50px;
+      }
+
+      #container #side h2 {
+        text-align: center;
+        font-size: 30px;
+        padding-bottom: 20px;
+      }
+
+      .image_book {
+        width: 400px;
+      }
+
+      #container #side input {
+        border: none;
+        border-bottom: 2px solid rgb(255, 255, 255);
+        overflow: hidden;
+        background: transparent;
+        display: flex;
+        flex-direction: column;
+        font-size: 30px;
+        height: 40px;
+        margin-bottom: 20px;
+        color: black;
+      }
+
+      #container #side button {
+        height: 50px;
+        width: 100px;
+        color: black;
+        font-size: 20px;
+        background-color: black;
+        color: beige;
+        margin-left: 250px;
+      }
+
+      ::placeholder {
+        /* chạy tốt trên Chrome, Firefox, Opera, Safari 10.1+ */
+        color: white !important;
+        opacity: 1; /* Firefox */
+      }
+
+      table tr:not(:first-child) {
+        cursor: pointer;
+        transition: all 0.25s ease-in-out;
+      }
+      table tr:not(:first-child):hover {
+        background-color: #ddd;
+      }
+    </style>
+  </head>
+<body>
+    <div class="logo">
+        <img src="../../public/images/logo1.png" alt="">
+        <a href="">LIBIB</a>
+    </div>
+
+
+    <nav class="navbar navbar-expand-lg ">
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto nav nav-tabs">
+            <li class="nav-item ">
+              <a class="nav-link text-dark" href="../home">Trang chủ <span class="sr-only">(current)</span></a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link text-dark" href="../staff">Nhân viên</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="../report/turn_over">Doanh thu</a>
+            </li>
+
+            <li class="nav-item dropdown active">
+              <a class="nav-link dropdown-toggle " data-toggle="dropdown" href="#" role="button" aria-expanded="false">Quản lý sách</a>
+              <div class="dropdown-menu" style="font-size: 20px;">
+                  <a  class="dropdown-item " href="../book/add_book_new" >Thêm mới</a>
+                  <a class="dropdown-item" href="../book/add_book_exist">Thêm vào kho</a>
+                  <a class="dropdown-item" href="../book/edit">Sửa</a>
+              </div>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link text-dark" href="../report/inventory">Tồn kho</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="../report/debt">Công nợ</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link text-dark" href="../regulation">Chính sách</a>
+            </li>
+          </ul>
+
+
+
+          <ul class="navbar-nav mr-left nav nav-tabs">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-dark" data-toggle="dropdown" href="./profile.html" role="button" aria-expanded="false"><i class="glyphicon glyphicon-user"></i></a>
+               
+              <div class="dropdown-menu" style="font-size: 20px;">
+                  <a  class="dropdown-item " href="./book/add_book_new" >Đổi mật khẩu</a>
+              </div>
+            </li>
+          </ul>
+          <a href="./profile.html">
+            <span class="navbar-text">
+              {{user.Username}}
+            </span>
+          </a>
+
+          <form action="/logout" method="post" id="fLogout">
+    </form>
+    <a href="javascript: $('#fLogout').submit();">Đăng xuất</a>
+      </div>
+    </nav>
+
+      
+      {{{body}}}
+
+     
+</body>
+</html>

@@ -1,0 +1,129 @@
+<div id="container">
+  <div id="side" class="verticalLine">
+    <form action="../book/add_book_new" method="post">
+      {{!-- <input type="Hidden" placeholder="Mã sách" id="id" /> --}}
+      <input type="text" placeholder="Tên sách" id="BookName" name="BookName" required/>
+      <input type="text" placeholder="Thể loại" id="Topic" name="Topic" required/>
+      <input type="text" placeholder="Tác giả" id="Author" name="Author" required/>
+      <input type="text" placeholder="Số lượng" id="Quantity" name="Quantity" required/>
+      <input type="text" placeholder="Giá" id="Price" name="Price" required/>
+
+      {{#if check}}
+      <span>số lượng nhập phải lớn hơn {{minAdd}}</span>
+      {{/if}}
+
+      <button  class="btn ht" type="button" id="final">Hoàn tất</button>
+      <button class="btn them" type="button" onclick="insert_Row()" >Thêm</button>
+      {{!-- <button class="btn" type="submit">Xong</button> --}}
+    </form>
+  </div>
+
+
+
+
+  <div id="main">
+    <h2>DANH SÁCH SÁCH THÊM</h2>
+    <hr id="hr2" />
+    <div class="infor" id="infor">
+      <form action="" class="form" id="form-1">
+        <table class="table table-bordered table-light" id="sampleTable">
+          <thead>
+            <tr>
+              {{!-- <th scope="col">ID</th> --}}
+              <th scope="col">Tên</th>
+              <th scope="col">Thể loại</th>
+              <th scope="col">Tác giả</th>
+              <th scope="col">Số lượng</th>
+              <th scope="col">Giá</th>
+            </tr>
+          </thead>
+          <tbody id="tbody">
+
+          </tbody>
+        </table>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+  var array = [];
+  var count = 0;
+  async function insert_Row() {
+
+    
+    //var f = x.insertCell(5);
+    //var data1=document.getElementById('id').value;
+    var data1 = document.getElementById('BookName').value;
+    var data2 = document.getElementById('Topic').value;
+    var data3 = document.getElementById('Author').value;
+    var data4 = document.getElementById('Quantity').value;
+    var data5 = document.getElementById('Price').value;
+
+    var check = false;
+    await $.getJSON(`/manager/book/is_available?book=${data1}|${data3}`, function (data) {
+      if (+data !== -1) {
+        check = true;
+        console.log(check);
+      }
+    })
+
+    if (check == true) {
+      alert("Sách đã có trong kho");
+      return;
+    }
+
+    if (+data4 < +{{ minAdd }} && {{minAdd}} != -1)
+  {
+    alert("Số lượng nhập phải lớn hơn" + {{ minAdd }});
+  return;
+    }
+
+var x = document.getElementById('sampleTable').insertRow(1);
+    var a = x.insertCell(0);
+    var b = x.insertCell(1);
+    var c = x.insertCell(2);
+    var d = x.insertCell(3);
+    var e = x.insertCell(4);
+  a.innerHTML = data1;
+  b.innerHTML = data2;
+  c.innerHTML = data3;
+  d.innerHTML = data4;
+  e.innerHTML = data5;
+
+  const n = array.length;
+  for (var i = 0; i < n; i++) {
+    if (array[i].BookName === data1 && array[i].Author === data3) {
+      array[i].Quantity = +array[i].Quantity + +data4;
+      return;
+    }
+  }
+
+  array.push({ BookName: data1, Topic: data2, Author: data3, Quantity: +data4, Price: data5 });
+  console.log(array);
+  }
+
+  $('#final').on('click', e => {
+
+    e.preventDefault();
+    const dataJS = JSON.stringify({ array });
+
+    fetch("/manager/book/add_book_new",
+      {
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+
+        method: "POST",
+        body: dataJS,
+      
+      }).then( res=>{
+
+        window.location.href = '/manager/home'
+      }
+      )
+  });       
+</script>

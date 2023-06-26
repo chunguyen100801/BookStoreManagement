@@ -1,0 +1,53 @@
+<h2>DANH SÁCH KHÁCH HÀNG </h2>
+
+    <div id="search">
+      <i class="material-icons">search</i>
+      <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Nhập thông tin cần tìm" title="Type in a name">
+      <button class="btn btn-dark" type="submit">Tìm</button>
+    </div>
+  
+      <div id="container" >
+        <div id="main">
+
+            <hr id="hr2">  
+            <div class="infor" id="infor">
+                <form action=""  class="form" id="form-1">
+                    <table class="table table-bordered table-light" id="myTable">
+                        <thead>
+                          <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Họ Tên</th>
+                            <th scope="col">Địa chỉ</th>
+                            <th scope="col">SĐT</th>
+                            <th scope="col">Ngày sinh</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Số nợ</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            {{#each list}}
+                          <tr>
+                            <td>{{idCustomer}}</td>
+                            <td>{{FullName}}</td>
+                            <td>{{Address}}</td>
+                            <td>{{PhoneNumber}}</td>
+                            <td>{{DateOfBirth}}</td>
+                            <td>{{Email}}</td>
+                            <td>{{DeptMoney}}</td>
+                          </tr>
+
+                          {{/each }}
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>    
+        <div id="side" class="verticalLine">
+          <form action="../staff/customer/add" style="margin-top: 50px; margin-bottom: 50px;">
+             <button class="btn btn-dark btn-lg px-5" type="submit" >Thêm khách hàng</button>
+          </form>
+          
+          <form action="../staff/customer/edit" style="margin-top: 50px; margin-bottom: 50px;">
+            <button class="btn btn-dark btn-lg px-5" type="submit" >Sửa thông tin</button>
+         </form>
+    </div>

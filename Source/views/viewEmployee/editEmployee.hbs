@@ -1,0 +1,78 @@
+<div id="container">
+  <div id="side" class="verticalLine">
+    <form action="/manager/staff/edit" method="post" id="formUpdate">
+      <input type="text" placeholder="ID" id="idEmployee" name="idEmployee" readonly />
+      <input type="text" placeholder="Họ tên" id="FullName" name="FullName" readonly />
+      <input type="tel" placeholder="SĐT" id="PhoneNumber" name="PhoneNumber" pattern="[0-9]*" required/>
+      <input type="email" placeholder="Email" id="Email" name="Email" required/>
+      {{!-- <input type="text" placeholder="Loại" id="Type" name="Type" /> --}}
+      <div style="width: 360px; font-size: 25px; margin-left: 30px; margin-top: 20px; ">
+        <select name="Type" id="Type" style="background-color: transparent;">
+          <option value=""></option>
+          <option value="Quản lý">Quản lý</option>
+          <option value="Nhân viên">Nhân viên</option>
+        </select>
+      </div>
+      <input type="text" placeholder="Địa chỉ" id="Address" name="Address" required/>
+      <input type="text" placeholder="Ngày sinh" id="DateOfBirth" name="DateOfBirth" readonly />
+      <button class="btn" type="submit" onclick="editRow();">Cập nhật</button>
+    </form>
+  </div>
+
+
+  <div id="main">
+    <h2>DANH SÁCH NHÂN VIÊN</h2>
+    <hr id="hr2" />
+    <div class="infor" id="infor">
+      <form class="form" id="form-1">
+        <table class="table table-bordered table-light" id="sampleTable">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Họ Tên</th>
+              <th scope="col">SĐT</th>
+              <th scope="col">Email</th>
+              <th scope="col">Loại</th>
+              <th scope="col">Địa chỉ</th>
+              <th scope="col">Ngày sinh</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each list}}
+            <tr>
+              <th>{{idEmployee}}</th>
+              <td>{{FullName}}</td>
+              <td>{{PhoneNumber}}</td>
+              <td>{{Email}}</td>
+              <td>{{Type}}</td>
+              <td>{{Address}}</td>
+              <td>{{DateOfBirth}}</td>
+            </tr>
+
+            {{/each }}
+          </tbody>
+        </table>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+  $('#formUpdate').on('submit', function (event) {
+    event.preventDefault();
+    const id = $('#idEmployee').val();
+    const PhoneNumber = $('#PhoneNumber').val();
+    const Email = $('#Email').val();
+    const type = $('#Type').val();
+    const Address = $('#Address').val();
+    if (id.length === 0 || PhoneNumber.length === 0 ||
+      Email.length === 0 || type.length === 0 || Address.length === 0) {
+      alert("Vui lòng chọn nhân viên cần thay đổi hoặc nhập đầy đủ thông tin");
+    }
+    else {
+      alert("Thay đổi thành công");
+      $('#formUpdate').off('submit').submit();
+    }
+  })
+</script>
