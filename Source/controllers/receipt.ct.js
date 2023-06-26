@@ -23,7 +23,7 @@ exports.getView = async (req, res, next) => {
             }
         }
     }
-    return res.render('viewEmployee/receipt', {
+    return res.render('viewReceipt/receipt', {
         minQuantity, maxDept,
         layout: 'ContainerReceipt.hbs'
     });
@@ -121,7 +121,7 @@ exports.gethisReceipt = async (req, res, next) => {
     listHis.forEach(element => {
         element.DateCreate = moment(element.DateCreate).format('DD-MM-YYYY')
     });
-    return res.render('viewEmployee/hisReceipt', {
+    return res.render('viewReceipt/hisReceipt', {
         listHis: listHis,
         Employee,
         layout: 'ContainerHisReceipt.hbs'

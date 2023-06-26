@@ -1,0 +1,64 @@
+<div id="container">
+
+  <div id="side" class="verticalLine">
+    <form method="post" id="formUpdate">
+      <input type="text" placeholder="Tên quy định" id="id" name="Detail" readonly>
+      <input type="number" placeholder="Giá trị" id="name" name="Value">
+      <div style="width: 360px; font-size: 25px; margin-top: 20px; ">
+        <label for="">Tình trạng:</label>
+        <select name="Status" id="topic" style="background-color: transparent;">
+          <option value=""></option>
+          <option value="Đang sử dụng">Đang sử dụng</option>
+          <option value="Không sử dụng">Không sử dụng</option>
+        </select>
+      </div>
+      <button class="btn" type="submit" onclick="editRow();">Cập nhật</button>
+    </form>
+  </div>
+
+  <div id="main">
+    <h2>DANH SÁCH CÁC QUY ĐỊNH </h2>
+    <hr id="hr2">
+    <div class="infor" id="infor">
+      <form action="" class="form" id="form-1">
+        <table class="table table-bordered table-light" id="sampleTable">
+          <thead>
+            <tr>
+              <th scope="col">Nội dung qui định</th>
+              <th scope="col">Giá trị qui định</th>
+              <th scope="col">Tình trạng sử dụng</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each reg}}
+            <tr>
+              <td>{{Detail}}</td>
+              <td>{{Value}}</td>
+              <td>{{Status}}</td>
+            </tr>
+            {{/each}}
+
+          </tbody>
+        </table>
+
+      </form>
+    </div>
+  </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+  $('#formUpdate').on('submit', function (event) {
+    event.preventDefault();
+    const detail = $('#id').val();
+    const value = $('#name').val();
+    const Status = $('#topic').val();
+
+    if (detail.length === 0 || value.length ===0 || Status.length===0) {
+      alert("Vui lòng chọn quy dịnh cần thay đổi hoặc nhập đầy đủ thông tin");
+    }
+    else {
+      alert("Thay đổi thành công");
+      $('#formUpdate').off('submit').submit();
+    }
+  })
+</script>

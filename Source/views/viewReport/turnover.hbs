@@ -1,0 +1,91 @@
+<h2>DOANH THU</h2>
+
+<div id="search">
+  {{!-- <i class="material-icons">search</i>
+  <input class="form-control " type="search" placeholder="Nhập thông tin cần tìm" aria-label="Search">
+  <button class="btn btn-outline-dark my-0 my-sm-0" type="submit">Tìm</button> --}}
+
+  {{!-- <div>
+    <label for="Type">Tháng :</label>
+    <select name="month" id="month">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+      <option value="11">11</option>
+      <option value="12">12</option>
+    </select>
+  </div> --}}
+
+  <div class="year">
+    <form method="post">
+      <label for="Type">Năm :</label>
+      <select id="month" name="year">
+        {{#each Year}}
+        <option>{{date_part}}</option>
+        {{/each}}
+      </select>
+  </div>
+  <button style="width:150px;" class="btn btn-dark " type="submit">Tạo báo cáo</button>
+  </form>
+</div>
+
+{{#if check}}
+  
+<div id="container">
+  <div id="main">
+    <hr id="hr2">
+    <div class="infor" id="infor">
+      <p > Không có dữ liệu</p>
+    </div>
+  </div>
+</div>
+
+{{else}}
+  
+
+
+<div id="container">
+  <div id="main">
+    <h3>{{title}}</h3>
+    <hr id="hr2">
+    <div class="infor" id="infor">
+      <form action="" class="form" id="form-1">
+        <table class="table table-bordered table-light">
+          <thead>
+            <tr>
+              <th scope="col">Tháng</th>
+              <th scope="col">Tổng số sách</th>
+              <th scope="col">Tổng tiền</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            {{#each report}}
+            <tr>
+              <th>{{monthly}}</th>
+              <td>{{numberbook}}</td>
+              <td>{{money}}</td>
+            </tr>
+            {{/each }}
+            <tr>
+              <th>Tổng cả năm</th>
+              <th>{{amountBook}}</th>
+              <th>{{totalMoney}}</th>
+            </tr>
+
+          </tbody>
+        </table>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+{{/if}}

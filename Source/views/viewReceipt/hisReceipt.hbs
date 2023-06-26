@@ -1,0 +1,40 @@
+
+<div id="container">
+
+    <div id="side" class="verticalLine">
+    <h2>Nhân viên bán hàng: </h2>
+    <h2>{{Employee.idEmployee}} - {{Employee.FullName}}</h2>
+    </div>
+    <div id="main">
+        <hr id="hr2">
+        <div class="infor" id="infor">
+            <form action="" class="form" id="form-1">
+                <table class="table table-bordered table-light">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID Hóa đơn</th>
+                            <th scope="col">ID Khách hàng</th>
+                            <th scope="col">Tên khách hàng</th>
+                            <th scope="col">Ngày bán</th>
+                            <th scope="col">Tổng tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each listHis}}
+                        <tr>
+                            <td>{{idReceipt}}</td>
+                            <td>{{idCustomer}}</td>
+                            <td>{{FullName}}</td>
+                            <td>{{DateCreate}}</td>
+                            <td>{{TotalMoney}}</td>
+                            
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+
+            </form>
+        </div>
+    </div>
+
+</div>

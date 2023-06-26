@@ -6,7 +6,7 @@ exports.getView = async (req, res, next) => {
     //     reg: reg
     // });
 
-    res.render('viewTest/regulation', {
+    res.render('viewRegulation/regulation', {
         reg: reg,
         layout: 'ContainerRegulation.hbs'
     });

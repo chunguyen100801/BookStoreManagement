@@ -1,0 +1,424 @@
+<div id="container">
+  <div id="side" class="verticalLine">
+{{!-- onkeyup="myFunction()" --}}
+  
+      <div id="search" style="margin-top: -50px; margin-left:-50px">
+        <i class="material-icons">search</i>
+        <input type="text" id="myInput" style="font-size:medium;" placeholder="Nhập tên sách"
+          title="Type in a name">
+        <button class="btn btn-outline-dark my-0 my-sm-0" type="submit">Tìm</button>
+      </div>
+
+      
+        <div id="main" style="margin-left: -150px;">
+
+          <hr id="hr2">
+          <div class="infor" id="infor">
+            <form action="" class="form" id="form-1">
+              <table class="table table-bordered table-light" id="myTable">
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Tên sách</th>
+                    <th scope="col">Tác giả</th>
+                    <th scope="col">Giá</th>
+                    <th scope="col">Số lượng</th>
+                  </tr>
+                </thead>
+                <tbody>
+<tr>
+      <td>Tiger Nixon</td>
+      <td>System Architect</td>
+      <td>Edinburgh</td>
+      <td>61</td>
+      <td></td>
+     
+    </tr>
+    <tr>
+      <td>Tiger Nixon</td>
+      <td>System Architect</td>
+      <td>Edinburgh</td>
+      <td>61</td>
+      <td>2011/04/25</td>
+     
+    </tr>
+    <tr>
+      <td>Tiger Nixon</td>
+      <td>System Architect</td>
+      <td>Edinburgh</td>
+      <td>61</td>
+      <td>2011/04/25</td>
+     
+    </tr>
+    <tr>
+      <td>Tiger Nixon</td>
+      <td>System Architect</td>
+      <td>Edinburgh</td>
+      <td>61</td>
+      <td>2011/04/25</td>
+     
+    </tr>
+    <tr>
+      <td>Tiger Nixon</td>
+      <td>System Architect</td>
+      <td>Edinburgh</td>
+      <td>61</td>
+      <td>2011/04/25</td>
+     
+    </tr>
+    <tr>
+      <td>Tiger Nixon</td>
+      <td>System Architect</td>
+      <td>Edinburgh</td>
+      <td>61</td>
+      <td>2011/04/25</td>
+     
+    </tr>
+    <tr>
+      <td>Tiger Nixon</td>
+      <td>System Architect</td>
+      <td>Edinburgh</td>
+      <td>61</td>
+      <td>2011/04/25</td>
+     
+    </tr>
+    <tr>
+      <td>Tiger Nixon</td>
+      <td>System Architect</td>
+      <td>Edinburgh</td>
+      <td>61</td>
+      <td>2011/04/25</td>
+     
+    </tr>
+    <tr>
+      <td>Tiger Nixon</td>
+      <td>System Architect</td>
+      <td>Edinburgh</td>
+      <td>61</td>
+      <td>2011/04/25</td>
+     
+    </tr>
+    <tr>
+      <td>Tiger Nixon</td>
+      <td>System Architect</td>
+      <td>Edinburgh</td>
+      <td>61</td>
+      <td>2011/04/25</td>
+     
+    </tr>
+    <tr>
+      <td>Tiger Nixon</td>
+      <td>System Architect</td>
+      <td>Edinburgh</td>
+      <td>61</td>
+      <td>2011/04/25</td>
+     
+    </tr>
+    <tr>
+      <td>Tiger Nixon</td>
+      <td>System Architect</td>
+      <td>Edinburgh</td>
+      <td>61</td>
+      <td>2011/04/25</td>
+     
+    </tr>
+    <tr>
+      <td>Tiger Nixon</td>
+      <td>System Architect</td>
+      <td>Edinburgh</td>
+      <td>61</td>
+      <td>2011/04/25</td>
+     
+    </tr>
+    <tr>
+      <td>Tiger Nixon</td>
+      <td>System Architect</td>
+      <td>Edinburgh</td>
+      <td>61</td>
+      <td>2011/04/25</td>
+     
+    </tr>
+    <tr>
+      <td>Tiger Nixon</td>
+      <td>System Architect</td>
+      <td>Edinburgh</td>
+      <td>61</td>
+      <td>2011/04/25</td>
+     
+    </tr>
+    <tr>
+      <td>Tiger Nixon</td>
+      <td>System Architect</td>
+      <td>Edinburgh</td>
+      <td>61</td>
+      <td>2011/04/25</td>
+     
+    </tr>
+                </tbody>
+              </table>
+            </form>
+          </div>
+        </div>
+
+
+
+
+
+  </div>
+
+
+  {{!-- <button class="btn them" id="them" type="button" onclick="insert_Row()">Thêm</button> --}}
+
+  <div id="main">
+    <h4 id="result1"></h4>
+    <h4>Danh sách sách</h4>
+    <hr id="hr2" />
+    <div class="infor" id="infor">
+      <form action="" class="form" id="form-1">
+        <table class="table table-bordered table-light" id="sampleTable">
+          <thead>
+            <tr>
+              {{!-- <th scope="col">ID</th> --}}
+              <th scope="col">Tên</th>
+
+              <th scope="col">Tác giả</th>
+              <th scope="col">Số lượng</th>
+              <th scope="col">Giá</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </form>
+    </div>
+    <label>Tổng tiền</label>
+
+    <span id="totalMoney" name="totalMoney" />
+    <button class="btn tt" type="button" id="thanhtoan">Thanh toán</button>
+    <button class="btn gn" type="button" id="ghino">Ghi nợ</button>
+  </div>
+
+</div>
+
+
+
+{{!-- <div class="modal fade" id="modalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content shadow">
+      <div class="modal-header">
+        <h5 class="modal-title">Vui lòng nhập thông tin khách hàng</h5>
+        <button type="button" id="close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body bg-image" style="background-image: url()">
+        <form id="inputs" class="needs-validation" novalidate="">
+          <div class="form-group mx-2 mb-3">
+            <label for="firstname">Họ tên</label>
+            <input type="text" class="form-control" id="Name" placeholder="Name" required="">
+          </div>
+          <div class="form-group mx-2">
+            <label for="lastname">SĐT</label>
+            <input type="text" class="form-control" id="Phone" placeholder="Phone" required="">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer justify text-14">
+        <button id="submit" type="submit" class="btn btn-primary" data-toggle="modal"
+          data-target="#modalForm">Submit</button>
+      </div>
+    </div>
+  </div>
+</div> --}}
+
+
+
+
+
+<script>
+
+  var arr = [];
+  var dept;
+  //$(document).ready(function () {
+  $('#modalForm').modal({
+    backdrop: 'static',
+    keyboard: false
+  })
+
+  let check = -1;
+  $("#submit, #close").click(async function (event) {
+    // Validation
+    event.preventDefault();
+    const phone = $('#Phone').val();
+    const name = $('#Name').val();
+    $.getJSON(`/staff/customer/is_available?phone=${name}|${phone}`, await function (data) {
+      if (data == -1) {
+        alert("Khách hàng chưa có trong hệ thống! vui lòng đăng ký khách hàng");
+        check = 0;
+        window.location.href = '/staff/customer/add';
+        return;
+      }
+      else {
+        dept = data;
+      }
+    })
+
+
+    var form = $("#inputs")
+    if (form[0].checkValidity() === false) {
+      event.preventDefault()
+      event.stopPropagation()
+    }
+    form.addClass('was-validated')
+
+    //Declare and initialize variable for display inputs in div
+    var code1 = "";
+    var code2 = "";
+    var code = "";
+    $("#inputs").each(function () {
+      var text1 = $(this).find("#Name").val();
+      var text2 = $(this).find("#Phone").val();
+      code1 += "" + text1;
+
+      code2 += "" + text2;
+      code = "Khách hàng : " + text1 + " - " + text2
+    });
+
+    $("#result1").html(code);
+    //$("#result2").html(code2);
+    arr.push({ NameCustomer: code1, Phone: code2 });
+  });
+
+
+
+  //});
+
+  var totalMoney = 0;
+  async function insert_Row() {
+
+    var data1 = document.getElementById("BookName").value;
+    var data2 = document.getElementById("Author").value;
+    var data3 = document.getElementById("Quantity").value;
+
+    if (data3 < 1) {
+      alert(`Số lượng sách lớn hơn 0`);
+      return;
+    }
+
+    var check = 0;
+    var price = 0;
+    var quantity = 0;
+    await $.getJSON(`/staff/receipt/is_available?book=${data1}|${data2}`, function (data) {
+      if (data.Quantity === -1) {
+        check = -1;
+      }
+      else if (+data.Quantity - +data3 < {{ minQuantity }} && {{ minQuantity }} != -1) {
+    quantity = data.Quantity;
+    check = -2;
+  }
+      else if (+data.Quantity < +data3) {
+    check = -3;
+    quantity = data.Quantity;
+  }
+
+  else {
+    price = data.Price;
+    quantity = data.Quantity;
+  }
+  })
+
+  if (check == -1) {
+    alert("Sách không có trong kho");
+    return;
+  }
+  else if (check == -2) { const min = {{ minQuantity }};
+  alert(`Sách sau khi bán có lượng tồn nhỏ hơn quy định: ${min}. Lượng sách hiện tại: ${quantity}. Vui lòng chọn sách khác`);
+  return;
+    }
+    else if (check == -3) {
+    alert(`Sách bán ra có số lượng lớn hơn hiện có trong kho. Số lượng trong kho: ${quantity}`);
+    return;
+  }
+
+
+
+  const n = arr.length;
+  var checkView = false;
+  for (var i = 1; i < n; i++) {
+    console.log(arr[i]);
+    if (arr[i].BookName === data1 && arr[i].Author === data2) {
+      arr[i].Quantity = +arr[i].Quantity + +data3;
+      if (+quantity - +arr[i].Quantity < {{ minQuantity }} && {{ minQuantity }} != -1)
+  {
+    const min = {{ minQuantity }};
+  alert(`Sách sau khi bán có lượng tồn nhỏ hơn quy định: ${min}. Lượng sách hiện tại: ${quantity}. Vui lòng chọn sách khác`);
+  arr[i].Quantity = +arr[i].Quantity - +data3;
+
+  checkView = true;
+  break;
+      }
+    }
+  }
+
+  if (checkView == false) {
+    var x = document.getElementById("sampleTable").insertRow(1);
+    var a = x.insertCell(0);
+    var b = x.insertCell(1);
+    var c = x.insertCell(2);
+    var d = x.insertCell(3);
+    a.innerHTML = data1;
+    b.innerHTML = data2;
+    c.innerHTML = data3;
+    d.innerHTML = price;
+    totalMoney = +totalMoney + +price * +data3;
+    $('#totalMoney').val(totalMoney);
+  } else {
+    return;
+  }
+
+  arr.push({ BookName: data1, Author: data2, Quantity: +data3 });
+  }
+
+  $('#thanhtoan').on('click', e => {
+    e.preventDefault();
+    arr[0].totalMoney = totalMoney;
+    arr[0].status = "thanh toán";
+    const dataJS = JSON.stringify({ arr });
+    fetch("/staff/receipt",
+      {
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        method: "POST",
+        body: dataJS
+      }).then(res => {
+        window.location.href = '/staff/customer';
+      })
+  });
+
+  $('#ghino').on('click', e => {
+    e.preventDefault();
+    if (+dept + +totalMoney > +{{ maxDept }} && {{ maxDept }}!= -1){
+    alert("Tổng tiền nợ lớn hơn quy định: " + {{ maxDept }} + "Nợ của quý khách hiện tại là: " + dept + " Không cho phép ghi nợ");
+  return;
+    }
+  arr[0].totalMoney = totalMoney;
+  arr[0].status = "ghi nợ";
+  const dataJS = JSON.stringify({ arr });
+  fetch("/staff/receipt",
+    {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: "POST",
+      body: dataJS
+    }).then(res => {
+      window.location.href = '/staff/customer';
+    })
+  });
+
+
+
+</script>

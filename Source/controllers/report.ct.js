@@ -7,7 +7,7 @@ exports.getTurnover = async (req, res, next) => {
     // const Months = reportM.getListMonth();
     const table = "Receipt"
     const Years = await reportM.getListYear(table);
-    res.render('viewTest/turnover', {
+    res.render('viewReport/turnover', {
         Year: Years,
         layout: 'ContainerTurnover.hbs'
     });
@@ -31,7 +31,7 @@ exports.postTurnover = async (req, res) => {
     const table = "Receipt";
     const Years = await reportM.getListYear(table);
     title = `Báo cáo năm ${year}`
-    res.render('viewTest/turnover', {
+    res.render('viewReport/turnover', {
         report: report,title,
         Year: Years,
         check: report.length === 0,
@@ -44,7 +44,7 @@ exports.postTurnover = async (req, res) => {
 exports.getDebt = async (req, res, next) => {
     const table = "Receipt"
     const Years = await reportM.getListYear(table);
-    res.render('viewTest/debt', {
+    res.render('viewReport/debt', {
         Year: Years,
         layout: 'ContainerDebt.hbs'
     });
@@ -57,7 +57,7 @@ exports.postDebt = async (req, res) => {
     const Years = await reportM.getListYear(table);
     const report = await reportM.reportDebt(month, year);
     title = `Báo cáo tháng ${month}-${year}`
-    res.render('viewTest/debt', {
+    res.render('viewReport/debt', {
         report: report,
         Year: Years,
         title,
@@ -74,7 +74,7 @@ exports.getInventory = async (req, res, next) => {
     //console.log(Months);
     const table = "Import_History"
     const Years = await reportM.getListYear(table);
-    res.render('viewTest/inventory', {
+    res.render('viewReport/inventory', {
         Year: Years, 
         layout: 'ContainerInventory.hbs'
     });
@@ -90,7 +90,7 @@ exports.postInventory = async (req, res) => {
     const report = await reportM.reportInventory(month, year);
     //console.log(Months);
     title = `Báo cáo tháng ${month}-${year}`
-    res.render('viewTest/inventory', {
+    res.render('viewReport/inventory', {
         report: report, title,
         Year: Years,
         check: report.length === 0,

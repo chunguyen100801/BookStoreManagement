@@ -1,0 +1,97 @@
+<h2>BÁO CÁO TỒN KHO</h2>
+
+{{!-- <div id="search">
+  <i class="material-icons">search</i>
+  <input class="form-control " type="search" placeholder="Nhập thông tin cần tìm" aria-label="Search">
+  <button class="btn btn-outline-dark my-0 my-sm-0" type="submit">Tìm</button>
+</div> --}}
+
+<div id="search">
+  {{!-- <i class="material-icons">search</i>
+  <input class="form-control " type="search" placeholder="Nhập thông tin cần tìm" aria-label="Search">
+  <button class="btn btn-outline-dark my-0 my-sm-0" type="submit">Tìm</button> --}}
+
+
+
+  <div class="year">
+    <form method="post">
+
+      <label for="Type">Tháng :</label>
+      <select name="month" id="month" value="10">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+        <option>8</option>
+        <option>9</option>
+        <option>10</option>
+        <option>11</option>
+        <option>12</option>
+      </select>
+
+      <label for="Type">Năm :</label>
+      <select name="year" value="{{year}}">
+        {{#each Year}}
+        <option>{{date_part}}</option>
+        {{/each}}
+      </select>
+  </div>
+  <button style="width:150px;" class="btn btn-dark" type="submit">Tạo báo cáo</button>
+  </form>
+</div>
+</div>
+
+{{#if check}}
+
+<div id="container">
+  <div id="main">
+    <hr id="hr2">
+    <div class="infor" id="infor">
+      <p> Không có dữ liệu</p>
+    </div>
+  </div>
+</div>
+
+{{else}}
+
+<div id="container">
+  <div id="main">
+    <h3>{{title}}</h3>
+    <hr id="hr2">
+    <div class="infor" id="infor">
+      <form action="" class="form" id="form-1">
+        <table class="table table-bordered table-light">
+          <thead>
+            <tr>
+              <th scope="col">Tên sách</th>
+              <th scope="col">Tác giả</th>
+              <th scope="col">Tồn đầu</th>
+              <th scope="col">Phát sinh</th>
+              <th scope="col">Tồn cuối</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            {{#each report}}
+            <tr>
+              <th>{{BookName}}</th>
+              <th>{{Author}}</th>
+              <th>{{quantity_import}}</th>
+              <td>{{incurred}}</td>
+              <td>{{quantity_stock}}</td>
+            </tr>
+
+            {{/each }}
+
+          </tbody>
+        </table>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+{{/if}}
