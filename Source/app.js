@@ -92,6 +92,9 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/images", express.static(path.join(__dirname, "/public/images")));
 
+// Handlebars.registerHelper('json', function(context) {
+//   return JSON.stringify(context);
+// });
 
 sessionMDW(app);
 

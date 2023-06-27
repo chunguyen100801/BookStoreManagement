@@ -1,10 +1,42 @@
 <div id="container">
   <div id="side" class="verticalLine">
     <form action="" method="post">
-      {{!-- <input type="Hidden" placeholder="Mã sách" id="id" /> --}}
-      <input type="text" placeholder="Tên sách" id="BookName" name="BookName" required/>
-      <input type="text" placeholder="Tác giả" id="Author" name="Author" required/>
-      <input type="text" placeholder="Số lượng" id="Quantity" name="Quantity" required/>
+     <div id="search" style="margin-top: -80px; margin-left:-50px">
+        
+        <input type="text" id="myInput" style="font-size:medium;" placeholder="Nhập tên sách"
+          title="Type in a name">
+        <button class="btn btn-outline-dark my-1 my-sm-0 mx-2" type="submit">Tìm</button>
+      </div>
+
+        <div id="main" style="margin-left: -180px; width:600px">
+          <div class="infor" id="infor" style="width:750px">
+            <form action="" class="form" id="form-1" style="width:100%">
+              <table class="table table-bordered table-light" style="width:100%" id="myTable">
+                <thead style="text-align:center">
+                  <tr>
+                    <th scope="col">Tên sách</th>
+                    <th scope="col">Tác giả</th>
+                    <th scope="col">Số lượng</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody >
+<tr>
+      <td>Systemccccccccccccccccc Architect</td>
+      <td>Edinburgh</td>
+      <td>
+        <input type="number" min="1" step="1" style="width:100px; font-size:20px; margin:-5px -5px;"/>
+      </td>
+      <td>
+        <button class="btn btn-outline-dark my-0 my-sm-0" style="height: 20px;" onclick="insert_Row()">Thêm</button>
+      </td>
+    </tr>
+                </tbody>
+              </table>
+            </form>
+          </div>
+        </div>
+
 
       {{#if check1}}
       <span>số lượng nhập phải lớn hơn {{minAdd}}</span>
@@ -15,7 +47,7 @@
       {{/if}}
 
       <button class="btn ht" type="button" id="final">Hoàn tất</button>
-      <button class="btn them" type="button" onclick="insert_Row()" >Thêm</button>
+      
     </form>
   </div>
 
@@ -28,7 +60,7 @@
     <div class="infor" id="infor">
       <form action="" class="form" id="form-1">
         <table class="table table-bordered table-light" id="sampleTable">
-          <thead>
+          <thead style="text-align:center">
             <tr>
               {{!-- <th scope="col">ID</th> --}}
               <th scope="col">Tên</th>

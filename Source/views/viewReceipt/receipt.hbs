@@ -1,173 +1,51 @@
 <div id="container">
   <div id="side" class="verticalLine">
-{{!-- onkeyup="myFunction()" --}}
   
       <div id="search" style="margin-top: -50px; margin-left:-50px">
         <i class="material-icons">search</i>
         <input type="text" id="myInput" style="font-size:medium;" placeholder="Nhập tên sách"
-          title="Type in a name">
+          title="Type in a name" onkeyup="myFunction()">
         <button class="btn btn-outline-dark my-0 my-sm-0" type="submit">Tìm</button>
       </div>
 
       
-        <div id="main" style="margin-left: -150px;">
+        <div id="main" style="margin-left: -240px; width:750px">
 
           <hr id="hr2">
-          <div class="infor" id="infor">
-            <form action="" class="form" id="form-1">
-              <table class="table table-bordered table-light" id="myTable">
+          <div class="infor" id="infor" style="width:100%">
+            <div action="" class="form" id="form-1" style="width:100%">
+              <table class="table table-bordered table-light" style="width:100%" id="myTable">
                 <thead>
                   <tr>
-                    <th scope="col">ID</th>
                     <th scope="col">Tên sách</th>
                     <th scope="col">Tác giả</th>
-                    <th scope="col">Giá</th>
                     <th scope="col">Số lượng</th>
+                    <th scope="col"></th>
                   </tr>
                 </thead>
                 <tbody>
-<tr>
-      <td>Tiger Nixon</td>
-      <td>System Architect</td>
-      <td>Edinburgh</td>
-      <td>61</td>
-      <td></td>
-     
-    </tr>
     <tr>
-      <td>Tiger Nixon</td>
-      <td>System Architect</td>
-      <td>Edinburgh</td>
-      <td>61</td>
-      <td>2011/04/25</td>
-     
-    </tr>
-    <tr>
-      <td>Tiger Nixon</td>
-      <td>System Architect</td>
-      <td>Edinburgh</td>
-      <td>61</td>
-      <td>2011/04/25</td>
-     
-    </tr>
-    <tr>
-      <td>Tiger Nixon</td>
-      <td>System Architect</td>
-      <td>Edinburgh</td>
-      <td>61</td>
-      <td>2011/04/25</td>
-     
-    </tr>
-    <tr>
-      <td>Tiger Nixon</td>
-      <td>System Architect</td>
-      <td>Edinburgh</td>
-      <td>61</td>
-      <td>2011/04/25</td>
-     
-    </tr>
-    <tr>
-      <td>Tiger Nixon</td>
-      <td>System Architect</td>
-      <td>Edinburgh</td>
-      <td>61</td>
-      <td>2011/04/25</td>
-     
-    </tr>
-    <tr>
-      <td>Tiger Nixon</td>
-      <td>System Architect</td>
-      <td>Edinburgh</td>
-      <td>61</td>
-      <td>2011/04/25</td>
-     
-    </tr>
-    <tr>
-      <td>Tiger Nixon</td>
-      <td>System Architect</td>
-      <td>Edinburgh</td>
-      <td>61</td>
-      <td>2011/04/25</td>
-     
-    </tr>
-    <tr>
-      <td>Tiger Nixon</td>
-      <td>System Architect</td>
-      <td>Edinburgh</td>
-      <td>61</td>
-      <td>2011/04/25</td>
-     
-    </tr>
-    <tr>
-      <td>Tiger Nixon</td>
-      <td>System Architect</td>
-      <td>Edinburgh</td>
-      <td>61</td>
-      <td>2011/04/25</td>
-     
-    </tr>
-    <tr>
-      <td>Tiger Nixon</td>
-      <td>System Architect</td>
-      <td>Edinburgh</td>
-      <td>61</td>
-      <td>2011/04/25</td>
-     
-    </tr>
-    <tr>
-      <td>Tiger Nixon</td>
-      <td>System Architect</td>
-      <td>Edinburgh</td>
-      <td>61</td>
-      <td>2011/04/25</td>
-     
-    </tr>
-    <tr>
-      <td>Tiger Nixon</td>
-      <td>System Architect</td>
-      <td>Edinburgh</td>
-      <td>61</td>
-      <td>2011/04/25</td>
-     
-    </tr>
-    <tr>
-      <td>Tiger Nixon</td>
-      <td>System Architect</td>
-      <td>Edinburgh</td>
-      <td>61</td>
-      <td>2011/04/25</td>
-     
-    </tr>
-    <tr>
-      <td>Tiger Nixon</td>
-      <td>System Architect</td>
-      <td>Edinburgh</td>
-      <td>61</td>
-      <td>2011/04/25</td>
-     
-    </tr>
-    <tr>
-      <td>Tiger Nixon</td>
-      <td>System Architect</td>
-      <td>Edinburgh</td>
-      <td>61</td>
-      <td>2011/04/25</td>
-     
+      {{#each listBook}}
+        <tr>
+          <td>{{BookName}}</td>
+          <td>{{Author}}</td>
+          
+          <td>
+            <input type="number" min="1" step="1" style="width:100px; font-size:20px; margin:-5px -5px;" id="{{idBook}}"/>
+          </td>
+      <td style="padding:5px">
+        <button class="btn btn-outline-dark my-0 my-sm-0" onclick="insert_Row(`{{BookName}}`, `{{Author}}`, `{{idBook}}`)">Thêm</button>
+      </td>    
+        </tr>
+      {{/each }}
     </tr>
                 </tbody>
               </table>
-            </form>
+            </div>
           </div>
         </div>
 
-
-
-
-
   </div>
-
-
-  {{!-- <button class="btn them" id="them" type="button" onclick="insert_Row()">Thêm</button> --}}
 
   <div id="main">
     <h4 id="result1"></h4>
@@ -193,16 +71,11 @@
     </div>
     <label>Tổng tiền</label>
 
-    <span id="totalMoney" name="totalMoney" />
+    <input id="totalMoney" name="totalMoney" style="background-color: transparent; width: 200px;" readonly/>
     <button class="btn tt" type="button" id="thanhtoan">Thanh toán</button>
     <button class="btn gn" type="button" id="ghino">Ghi nợ</button>
   </div>
-
-</div>
-
-
-
-{{!-- <div class="modal fade" id="modalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content shadow">
       <div class="modal-header">
@@ -229,10 +102,8 @@
       </div>
     </div>
   </div>
-</div> --}}
-
-
-
+</div>
+</div>
 
 
 <script>
@@ -294,11 +165,11 @@
   //});
 
   var totalMoney = 0;
-  async function insert_Row() {
-
-    var data1 = document.getElementById("BookName").value;
-    var data2 = document.getElementById("Author").value;
-    var data3 = document.getElementById("Quantity").value;
+  async function insert_Row(BookName, Author, idBook) {
+    
+    var data1 = BookName;
+    var data2 = Author;
+    var data3 = document.getElementById(`${idBook}`).value;
 
     if (data3 < 1) {
       alert(`Số lượng sách lớn hơn 0`);
@@ -371,12 +242,13 @@
     c.innerHTML = data3;
     d.innerHTML = price;
     totalMoney = +totalMoney + +price * +data3;
-    $('#totalMoney').val(totalMoney);
+    $('#totalMoney').val(totalMoney + "VND");
   } else {
     return;
   }
 
   arr.push({ BookName: data1, Author: data2, Quantity: +data3 });
+  //console.log(arr)
   }
 
   $('#thanhtoan').on('click', e => {

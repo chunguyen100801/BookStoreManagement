@@ -23,8 +23,9 @@ exports.getView = async (req, res, next) => {
             }
         }
     }
+    listBook = await bookM.getAll();
     return res.render('viewReceipt/receipt', {
-        minQuantity, maxDept,
+        minQuantity, maxDept, listBook,
         layout: 'ContainerReceipt.hbs'
     });
 }
