@@ -102,6 +102,14 @@ var x = document.getElementById('sampleTable').insertRow(1);
   }
 
   array.push({ BookName: data1, Topic: data2, Author: data3, Quantity: +data4, Price: data5 });
+  
+  document.getElementById('BookName').value = '';
+  document.getElementById('Topic').value = '';
+  document.getElementById('Author').value = '';
+  document.getElementById('Quantity').value = '';
+  document.getElementById('Price').value = '';
+
+
   console.log(array);
   }
 

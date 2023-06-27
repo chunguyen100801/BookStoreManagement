@@ -75,10 +75,10 @@ exports.getViewAddExist = async (req, res) => {
             }
         }
     }
-
+    listBook = await bookM.getAll();
     res.render('viewBook/addExist', {
         check1, minAdd,
-        check2, minInventory,
+        check2, minInventory, listBook,
         layout: 'ContainerAddExist.hbs'
     });
 }

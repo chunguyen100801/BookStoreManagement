@@ -28,15 +28,13 @@
       padding: 0;
       font-family: sans-serif;
       /*background-image: url(../../public/images/bg-chinh.jpg);*/
-      background-image: radial-gradient(#7272f9, #dafffc);
-      background-repeat: no-repeat;
-      background-size: cover;
-      position: relative;
+             background-image: radial-gradient(#d8fffe, #f3f3f3);
+
     }
 
     .logo a {
       position: absolute;
-      font-size: 80px;
+      font-size: 40px;
       color: black;
       text-decoration: none;
 
@@ -121,7 +119,7 @@
 
     h2 {
       /* position: absolute; */
-      font-size: 46px;
+      font-size: 30px;
       text-align: center;
       font-weight: bold;
     }
@@ -140,11 +138,10 @@
 </head>
 
 <body>
-  <div class="logo">
-    <img src="../../public/images/logo1.png" alt="">
-    <a href="">LIBIB</a>
-  </div>
-
+    <div class="logo">
+        <img src="../../public/images/logo1.png" width="80px" height="80px" alt="">
+        <a href="./home" style="margin-top: 10px;">BookStore</a>
+    </div>
   <nav class="navbar navbar-expand-lg ">
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -184,29 +181,29 @@
         </li>
       </ul>
 
-      <a href=""><i class="glyphicon glyphicon-user"></i></a>
       <ul class="navbar-nav mr-left nav nav-tabs">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-dark" data-toggle="dropdown" href="#" role="button"
-            aria-expanded="false">{{Username}}</a>
+            aria-expanded="false"><i class="glyphicon glyphicon-user"></i></a>
 
           <div class="dropdown-menu" style="font-size: 20px;">
             <a class="dropdown-item " href="/manager/account/change_password">Đổi mật khẩu</a>
+                        <a class="dropdown-item " href="javascript: $('#fLogout').submit();">Đăng xuất</a>
+          
           </div>
         </li>
       </ul>
 
 
-      <a href="">
+      <span href="">
         <span class="navbar-text">
           {{user.Username}}
         </span>
-      </a>
+      </span>
 
 
       <form action="/logout" method="post" id="fLogout">
       </form>
-      <a href="javascript: $('#fLogout').submit();">Đăng xuất</a>
   </nav>
 
   {{{body}}}

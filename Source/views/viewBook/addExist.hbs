@@ -1,6 +1,6 @@
 <div id="container">
   <div id="side" class="verticalLine">
-    <form action="" method="post">
+    <div >
      <div id="search" style="margin-top: -80px; margin-left:-50px">
         
         <input type="text" id="myInput" style="font-size:medium;" placeholder="Nhập tên sách"
@@ -10,7 +10,7 @@
 
         <div id="main" style="margin-left: -180px; width:600px">
           <div class="infor" id="infor" style="width:750px">
-            <form action="" class="form" id="form-1" style="width:100%">
+            <div class="form" id="form-1" style="width:100%">
               <table class="table table-bordered table-light" style="width:100%" id="myTable">
                 <thead style="text-align:center">
                   <tr>
@@ -22,18 +22,24 @@
                 </thead>
                 <tbody >
 <tr>
-      <td>Systemccccccccccccccccc Architect</td>
-      <td>Edinburgh</td>
-      <td>
-        <input type="number" min="1" step="1" style="width:100px; font-size:20px; margin:-5px -5px;"/>
-      </td>
-      <td>
-        <button class="btn btn-outline-dark my-0 my-sm-0" style="height: 20px;" onclick="insert_Row()">Thêm</button>
-      </td>
+  {{#each listBook}}
+        <tr>
+          <td>{{BookName}}</td>
+          <td>{{Author}}</td>
+          
+          <td>
+            <input type="number" min="1" step="1" style="width:100px; font-size:20px; margin:-5px -5px;" id="{{idBook}}"/>
+          </td>
+      <td style="padding:5px">
+        <button class="btn btn-outline-dark my-0 my-sm-0" onclick="insert_Row(`{{BookName}}`, `{{Author}}`, `{{idBook}}`)">Thêm</button>
+      </td>    
+        </tr>
+      {{/each }}
+
     </tr>
                 </tbody>
               </table>
-            </form>
+            </div>
           </div>
         </div>
 
@@ -48,7 +54,7 @@
 
       <button class="btn ht" type="button" id="final">Hoàn tất</button>
       
-    </form>
+    </div>
   </div>
 
 
@@ -83,18 +89,15 @@
 <script>
   var array = [];
   var count = 0;
-  async function insert_Row() {
+  async function insert_Row(BookName, Author, idBook) {
 
-
-    //var f = x.insertCell(5);
-    //var data1=document.getElementById('id').value;
-    var data1 = document.getElementById('BookName').value;
-    var data2 = document.getElementById('Author').value;
-    var data3 = document.getElementById('Quantity').value;
+    var data1 = BookName;
+    var data2 = Author;
+    var data3 = document.getElementById(`${idBook}`).value;
 
     if(data3<1)
     {
-      alert(`Số lượng sách lớn hơn 0`);
+      alert(`Số lượng sách phải lớn hơn 0`);
       return;
     }
 

@@ -22,15 +22,13 @@
         padding:0;
         font-family: sans-serif;
         /* background: linear-gradient(#141e30, #243b55); */
-        background-image:url(../../Images/bg-chinh.jpg);
-        background-repeat:no-repeat;
-        background-size: cover;
-        position: relative;
+                    background-image: radial-gradient(#d8fffe, #f3f3f3);
+
         }
 
         .logo a{
             position: absolute;
-            font-size: 80px;
+            font-size: 40px;
             color: black;
             text-decoration: none; 
             
@@ -127,7 +125,7 @@
         }
         h2{
           /* position: absolute; */
-          font-size: 46px;
+          font-size: 30px;
           text-align: center;
           font-weight: bold;
         }
@@ -145,8 +143,8 @@
 </head>
 <body>
     <div class="logo">
-        <img src="../../Images/logo1.png" alt="">
-        <a href="">LIBIB</a>
+       <img src="../../public/images/logo1.png" width="80px" height="80px" alt="">
+        <a href="./home" style="margin-top: 10px;">BookStore</a>
     </div>
 
 
@@ -189,19 +187,20 @@
               <a class="nav-link dropdown-toggle text-dark" data-toggle="dropdown" href="" role="button" aria-expanded="false"><i class="glyphicon glyphicon-user"></i></a>
                
               <div class="dropdown-menu" style="font-size: 20px;">
-                  <a  class="dropdown-item " href="./book/add_book_new" >Đổi mật khẩu</a>
+                  <a  class="dropdown-item " href="/staff/account/change_password" >Đổi mật khẩu</a>
+                        <a class="dropdown-item " href="javascript: $('#fLogout').submit();">Đăng xuất</a>
+              
               </div>
             </li>
           </ul>
-          <a href="./profile.html">
+          <span href="./profile.html">
             <span class="navbar-text">
               {{user.Username}}
             </span>
-          </a>
+          </span>
 
           <form action="/logout" method="post" id="fLogout">
             </form>
-            <a href="javascript: $('#fLogout').submit();">Đăng xuất</a>
       </div>
     </nav>
 
