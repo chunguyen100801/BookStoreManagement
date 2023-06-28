@@ -25,6 +25,8 @@ router.post('/logout', accountC.postLogout);
 
 router.get('/is_available', accountC.isAvailable);
 
+router.get('/handleResetPassword', accountC.handleResetPassword);
+
 router.get('/reset', accountC.getResetPw);
 router.post('/reset', accountC.postResetPw);
 

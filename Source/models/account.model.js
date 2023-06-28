@@ -28,5 +28,7 @@ module.exports = {
     update: async(username, password) =>{
         const query = `UPDATE "Account" SET "Password" = '${password}'  where "Username" = '${username}'`;
         return db.none(query);
-    }
+    },
+
+
 }

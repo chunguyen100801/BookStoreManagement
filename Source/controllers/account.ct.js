@@ -1,7 +1,11 @@
 
 const cryptoJS = require('crypto-js');
 const accountM = require('../models/account.model.js');
+const employeeM = require('../models/employee.model.js');
+
 const hashLength = 64;
+const nodemailer = require("nodemailer");
+require('dotenv').config;
 
 exports.getLogin = (req, res, next) => {
     if (req.session.auth === true) {
@@ -61,6 +65,7 @@ exports.isAvailable = async (req, res) => {
 }
 
 
+
 exports.getChangePw = (req, res, next) => {
     return res.render('viewAccount/changePassword', {
         layout: 'containerChangePW.hbs'
@@ -104,16 +109,64 @@ exports.getResetPw = (req, res, next) => {
     });
 }
 
-exports.postResetPw = async (req, res) => {
-    //const user = await accountM.findByUsername(req.body.Username);
-    const pwN = req.body.PasswordNew;
-    const saltN = Date.now().toString(16);//dob.toString(16);
-    const pwNS = pwN + saltN;
-    const pwNH = cryptoJS.SHA3(pwNS, { outputLength: hashLength * 4 }).toString(cryptoJS.enc.Hex);
-    const password = pwNH + saltN;
+async function hanldSendEmail(EmailAddress_User, newPassword, username){
+    const transporter = nodemailer.createTransport({
+        service:"gmail",
+        auth: {
+          // TODO: replace `user` and `pass` values from <https://forwardemail.net>
+          user: process.env.Address_Email,
+          pass: process.env.Password_Email
+        }
+      });
+      
+    var info = await transporter.sendMail({
+        from: process.env.Address_Email,
+        to: `${EmailAddress_User}`,
+        subject: "Reset Password",
+        text: `Mật khẩu mới của tài khoản ${username} là: ${newPassword}`, // plain text body
+        html: `Mật khẩu mới của tài khoản ${username} là:<b>${newPassword}</b>`
+    });
+    return info;
+}
+      
 
+exports.handleResetPassword = async(req, res) =>{
+    const username = req.query.user;
+    const user = await accountM.findByUsername(username);
+
+    var check = {checkAvailable: false, checkEmail: false};
+
+    if (user === null) {
+        return res.json(check);
+    }
+    check.checkAvailable = true;
+
+    const employee = await employeeM.getEmpByIdAcc(user.idAccount);
+    let newPassword = (Math.random() + 1).toString(36).substring(6);
+
+    // console.log(employee.Email, newPassword);
+
+    var sendEmail = await hanldSendEmail(employee.Email, newPassword, username);
+
+    if(sendEmail.rejected.length == 0){
+        check.checkEmail = true;
+
+        const pwN = newPassword;
+        const saltN = Date.now().toString(16);//dob.toString(16);
+        const pwNS = pwN + saltN;
+        const pwNH = cryptoJS.SHA3(pwNS, { outputLength: hashLength * 4 }).toString(cryptoJS.enc.Hex);
+        const password = pwNH + saltN;
+    
+        await accountM.update(username, password);
+    }
+
+    // console.log(check);
+    res.json(check);
+}
+
+exports.postResetPw = async (req, res) => {
     const username = req.body.Username;
-    await accountM.update(username, password);
+
 
     res.redirect('/');
 }

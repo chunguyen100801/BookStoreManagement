@@ -136,7 +136,7 @@
         <a href="" style="margin-top: 10px;">BookStore</a>
     </div>
     <form action="./login">
-        <button class="btn btn-dark btn-lg px-5 back" style="margin-top: ;" type="submit">Quay lại</button>
+        <button class="btn btn-dark btn-lg px-5 back" style="margin-top: 230px; margin-left: 800px" type="submit">Quay lại</button>
     </form>
 
     {{{body}}}
@@ -151,15 +151,15 @@
         const pwn = $('#PasswordNew').val();
         const pwc = $('#PasswordConfirm').val();
         console.log(pwc, pwn);
-        $.getJSON(`/is_available?user=${username}`, function (data) {
-            if (data === false) {
+        $.getJSON(`/handleResetPassword?user=${username}`, function (check) {
+            if (check.checkAvailable === false) {
                 alert("tai khoan chưa được dang ky");
             }
-            else if(pwn !== pwc){
-                alert("Xác nhận mật khẩu chưa chính xác");
-            } 
+            else if(check.checkEmail === false){
+                alert("Email không chính xác!");
+            }
             else {
-                alert("Đổi mật khẩu thành công");
+                alert("Mật khẩu đã được gửi về Email, vui lòng kiểm tra Email");
                 $('#frmReset').off('submit').submit();
             }
         })
