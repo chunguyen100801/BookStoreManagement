@@ -1,3 +1,5 @@
 /.git
 
 /Source/node_modules
+
+.env

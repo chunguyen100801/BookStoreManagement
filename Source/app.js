@@ -17,9 +17,10 @@ const path = require('path');
 const auth = require('./middleWares/auth');
 const sessionMDW = require('./middleWares/session');
 
+require('dotenv').config();
 
 const app = express();
-const port = 3000
+const port = process.env.PORT;
 
 app.engine('hbs', exphbs.engine({
   extname: 'hbs',
