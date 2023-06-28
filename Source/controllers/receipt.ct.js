@@ -83,7 +83,7 @@ exports.postReceipt = async (req, res) => {
 
     const data = req.body.arr;
     const infoCus = data[0];
-    console.log(infoCus);
+    console.log(data);
 
     const customer = await cusM.getCusByNameAndPhone(infoCus.NameCustomer, infoCus.Phone);
     customer.DateOfBirth = moment(customer.DateOfBirth).format('YYYY-MM-DD');

@@ -3,12 +3,12 @@
   <div id="side" class="verticalLine">
     <form action="./edit" method="post" id="formUpdate">
 
-      <input type="Hidden" placeholder="Mã sách" id="idBook" name="idBook" required>
-      <input type="text" placeholder="Tên sách" id="BookName" name="BookName" required>
+      <input type="Hidden" placeholder="Mã sách" id="idBook" name="idBook" required readonly>
+      <input type="text" placeholder="Tên sách" id="BookName" name="BookName" required readonly>
       <input type="text" placeholder="Thể loại" id="Topic" name="Topic" required>
-      <input type="text" placeholder="Tác giả" id="Author" name="Author" required>
-      <input type="text" placeholder="Số lượng" id="Quantity" name="Quantity" required>
-      <input type="text" placeholder="Giá" id="Price" name="Price" required>
+      <input type="text" placeholder="Tác giả" id="Author" name="Author" required readonly>
+      <input type="number" min="0" step="0" placeholder="Số lượng" id="Quantity" name="Quantity" required>
+      <input type="number" min="0" placeholder="Giá" id="Price" name="Price" required>
       <button class="btn" type="submit" onclick="edit_Row()">Sửa</button>
     </form>
   </div>

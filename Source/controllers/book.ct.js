@@ -95,6 +95,7 @@ exports.postAddExist = async (req, res) => {
     const idImport_History = await bookM.addHistory(DayCreate);
     
     const listBook = req.body.array;//mảng sách nhận từ người dùng
+    console.log(listBook);
     listBook.forEach( async (book) =>{
         const Quantity = await bookM.getQuantity(book);
         const QuantityAfter = Quantity + book.Quantity;

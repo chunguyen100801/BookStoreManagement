@@ -5,8 +5,8 @@
       <input type="text" placeholder="Tên sách" id="BookName" name="BookName" required/>
       <input type="text" placeholder="Thể loại" id="Topic" name="Topic" required/>
       <input type="text" placeholder="Tác giả" id="Author" name="Author" required/>
-      <input type="text" placeholder="Số lượng" id="Quantity" name="Quantity" required/>
-      <input type="text" placeholder="Giá" id="Price" name="Price" required/>
+      <input type="number" min="1" step="1" placeholder="Số lượng" id="Quantity" name="Quantity" required/>
+      <input type="number" min="1" placeholder="Giá" id="Price" name="Price" required/>
 
       {{#if check}}
       <span>số lượng nhập phải lớn hơn {{minAdd}}</span>
@@ -80,6 +80,13 @@
     alert("Số lượng nhập phải lớn hơn" + {{ minAdd }});
   return;
     }
+    const n = array.length;
+  for (var i = 0; i < n; i++) {
+    if (array[i].BookName === data1 && array[i].Author === data3) {
+      array[i].Quantity = +array[i].Quantity + +data4;
+      return;
+    }
+  }
 
 var x = document.getElementById('sampleTable').insertRow(1);
     var a = x.insertCell(0);
