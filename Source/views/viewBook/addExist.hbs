@@ -72,7 +72,7 @@
               <th scope="col">Tên</th>
               <th scope="col">Tác giả</th>
               <th scope="col">Số lượng</th>
-              <th scope="col"><a>Hủy</a></th> 
+              <th scope="col"><a>Bỏ</a></th> 
             </tr>
           </thead>
           <tbody>
@@ -151,7 +151,7 @@ const n = array.length;
   a.innerHTML = data1;
   b.innerHTML = data2;
   c.innerHTML = `<span id="${data1+data2}">${data3}</span>`;
-  e.innerHTML = `<button class="btn btn-outline-dark my-0 my-sm-0" onclick="deleteRowBook('${data1}', '${data2}', ${data3})">Hủy</button>`
+  e.innerHTML = `<button class="btn btn-outline-dark my-0 my-sm-0" onclick="deleteRowBook('${data1}', '${data2}', ${data3})">Bỏ</button>`
   
 
   array.push({ BookName: data1, Author: data2, Quantity: +data3});
@@ -172,7 +172,11 @@ $('#final').on('click', e => {
 
     e.preventDefault();
     const dataJS = JSON.stringify({ array });
-
+if(array.length==0){
+  alert("Chưa có sách trong hóa đơn. Vui lòng nhập sách!");
+  return;
+}
+alert("Thêm thành công");
     fetch("/manager/book/add_book_exist",
       {
         headers: {

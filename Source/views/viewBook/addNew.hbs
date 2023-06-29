@@ -134,6 +134,11 @@ function deleteRowBook(BookName, Author){
     e.preventDefault();
     const dataJS = JSON.stringify({ array });
 console.log(array);
+if(array.length==0){
+  alert("Chưa có sách trong hóa đơn. Vui lòng nhập sách!");
+  return;
+}
+alert("Thêm sách thành công");
     fetch("/manager/book/add_book_new",
       {
         headers: {

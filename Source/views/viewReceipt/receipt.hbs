@@ -62,7 +62,7 @@
               <th scope="col">Tác giả</th>
               <th scope="col">Số lượng</th>
               <th scope="col">Đơn Giá</th>
-              <th scope="col"><a>Hủy</a></th>
+              <th scope="col"><a>Bỏ</a></th>
             </tr>
           </thead>
           <tbody>
@@ -252,7 +252,7 @@ $('#sampleTable').on('click', 'button', function(e){
     b.innerHTML = data2;
     c.innerHTML = `<span id="${data1+data2}">${data3}</span>`;
     d.innerHTML = price;
-    e.innerHTML = `<button style="height: 40px;" onclick="deleteRowBook('${data1}', '${data2}', ${data3}, ${price})" >Hủy</button>`
+    e.innerHTML = `<button style="height: 40px;" onclick="deleteRowBook('${data1}', '${data2}', ${data3}, ${price})" >Bỏ</button>`
     totalMoney = +totalMoney + +price * +data3;
     //console.log(totalMoney)
     $('#totalMoney').val(totalMoney + "VND");
@@ -285,9 +285,13 @@ $('#sampleTable').on('click', 'button', function(e){
   }
 
   $('#thanhtoan').on('click', e => {
+    if(arr.length==0){
+  alert("Chưa có sách trong hóa đơn. Vui lòng nhập sách!");
+  return;
+}
         var n = arr.length;
     if(totalMoney==0){
-      alert("Chưa có sách nào");return;
+      alert("Chưa có sách trong hóa đơn. Vui lòng nhập sách!");return;
     }
     e.preventDefault();
     arr[0].totalMoney = totalMoney;
@@ -309,7 +313,7 @@ $('#sampleTable').on('click', 'button', function(e){
 
   $('#ghino').on('click', e => {
     if(totalMoney==0){
-      alert("Chưa có sách nào");return;
+      alert("Chưa có sách trong hóa đơn. Vui lòng nhập sách!");return;
     }
     e.preventDefault();
     if (+dept + +totalMoney > +{{ maxDept }} && {{ maxDept }}!= -1){
