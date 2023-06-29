@@ -17,7 +17,7 @@ exports.getView = async (req, res, next) => {
                 minQuantity = listRule[i].Value;
                 check1 = true;
             }
-            else if (listRule[i].Detail === 'Số tiền nợ tối đa khách hàng có thể nợ') {
+            if (listRule[i].Detail === 'Số tiền nợ tối đa khách hàng có thể nợ') {
                 maxDept = listRule[i].Value;
                 check2 = true;
             }

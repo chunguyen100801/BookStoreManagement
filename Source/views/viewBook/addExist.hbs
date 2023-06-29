@@ -45,11 +45,11 @@
 
 
       {{#if check1}}
-      <span>số lượng nhập phải lớn hơn {{minAdd}}</span>
+      <span>Số lượng nhập phải lớn hơn {{minAdd}}.</span>
       {{/if}}
 
       {{#if check2}}
-      <span>số lượng tồn của sách phải nhỏ hơn {{minInventory}}</span>
+      <span>Số lượng tồn của sách phải nhỏ hơn {{minInventory}}.</span>
       {{/if}}
 
       <button class="btn ht" type="button" id="final">Hoàn tất</button>
@@ -108,29 +108,24 @@
     var check2 = false;
 
     await $.getJSON(`/manager/book/is_available?book=${data1}|${data2}`, function (data) {
-      if (data === -1) {
-        check = true;
-      }
-      else if (data > {{ minInventory }} && {{minInventory}} != -1){
+      console.log(data, {{minInventory}});
+    if ((data > {{ minInventory }}) && ({{minInventory}} != -1)){
       check2 = true;
     }
   })
 
-  if (check == true) {
-    alert("Sách chưa có trong kho");
-    return;
-  }
+    if (+data3 < +{{ minAdd }} && {{minAdd}} != -1)
+  {
+    alert("Số lượng nhập phải lớn hơn" + {{ minAdd }});
+  return;
+    }
 
   if (check2 == true) {
     alert('Lượng tồn của sách lớn hơn quy định');
     return;
   }
 
-  if (+data3 < +{{ minAdd }} && {{minAdd}} != -1)
-  {
-    alert("Số lượng nhập phải lớn hơn" + {{ minAdd }});
-  return;
-    }
+
 
 const n = array.length;
   for (var i = 0; i < n; i++) {

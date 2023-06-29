@@ -14,6 +14,7 @@ exports.check = async (req, res) => {
     var Quantity = -1;
     if (Book !== null) {
         Quantity = Book.Quantity;
+
     }
     return res.json(Quantity);
 }
@@ -69,12 +70,12 @@ exports.getViewAddExist = async (req, res) => {
                 minAdd = listRule[i].Value;
                 check1 = true;
             }
-            else if(listRule[i].Detail === 'Số lượng tồn tối thiệu trước khi nhập'){
+            if(listRule[i].Detail === 'Số lượng tồn tối thiểu trước khi nhập'){
                 minInventory = listRule[i].Value;
                 check2 = true;
             }
         }
-    }
+    }console.log(minInventory);
     listBook = await bookM.getAll();
     res.render('viewBook/addExist', {
         check1, minAdd,

@@ -317,7 +317,7 @@ $('#sampleTable').on('click', 'button', function(e){
     }
     e.preventDefault();
     if (+dept + +totalMoney > +{{ maxDept }} && {{ maxDept }}!= -1){
-    alert("Tổng tiền nợ lớn hơn quy định: " + {{ maxDept }} + "Nợ của quý khách hiện tại là: " + dept + " Không cho phép ghi nợ");
+    alert("Tổng tiền nợ lớn hơn quy định: " + {{ maxDept }} + ". Nợ của quý khách hiện tại là: " + dept + " Không cho phép ghi nợ");
   return;
     }
   arr[0].totalMoney = totalMoney;
